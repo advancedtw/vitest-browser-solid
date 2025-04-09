@@ -12,7 +12,6 @@ test('renders simple component', async () => {
 
 test('renders counter', async () => {
   const screen = render(<Counter initialCount={1} />)
-
   await expect.element(screen.getByText('Count is 1')).toBeVisible()
   await screen.getByRole('button', { name: 'Increment' }).click()
   await expect.element(screen.getByText('Count is 2')).toBeVisible()

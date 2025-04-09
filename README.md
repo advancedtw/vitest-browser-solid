@@ -10,22 +10,23 @@ Render SolidJS components in Vitest Browser Mode. This library follows `testing-
 
 Requires `vitest` >= 2.1.0, `@vitest/browser` >= 2.1.0, and `solid-js` >= 1.8.0.
 
-```tsx
-import { render } from 'vitest-browser-solid'
-import { expect, test } from 'vitest'
-import { Counter } from './Counter' // Your SolidJS component
+Tested and developed using `vitest` 3.1.1, `@vitest/browser` 3.1.1, and `solid-js` 1.9.5.
 
-test('counter button increments the count', async () => {
-  // JSX containing your component and props
-  const screen = render( <Counter initialCount={1} />)
+## Installation
 
-  // Interact using Vitest locators (async)
-  await screen.getByRole('button', { name: 'Increment' }).click()
+```bash
+pnpm add -D vitest-browser-solid
+```
 
-  // Assert using Vitest async assertions (waits automatically)
-  await expect.element(screen.getByText('Count is 2')).toBeVisible()
-})
+## Usage
 
+check [render.test.tsx](./test/render.test.tsx) for up to date example.
+
+this library test uses *itself* to render components in vite browser mode.
+
+## Setup
+
+```ts
 // vitest.config.ts
 import { defineConfig } from 'vitest/config'
 import solidPlugin from 'vite-plugin-solid' // Use the Solid plugin
@@ -44,43 +45,24 @@ export default defineConfig({
     },
   },
 })
+```
 
-// src/setupVitestBrowser.ts
-// Add an import at the top so TypeScript can pick up types and extensions
-import 'vitest-browser-solid'
-
-
-// myComponent.test.tsx
+## Basic test
+```tsx
+import { render } from 'vitest-browser-solid'
 import { expect, test } from 'vitest'
-import { page } from '@vitest/browser/context' // Import page context
-import { MyComponent } from './MyComponent'
+import { Counter } from './Counter' // Your SolidJS component
 
-test('counter button increments the count using page.render', async () => {
+test('counter button increments the count', async () => {
   // JSX containing your component and props
-  const screen = page.render( <MyComponent initialValue={5} />)
+  const screen = render( <Counter initialCount={1} />)
 
-  // ... interactions and assertions ...
-  await screen.getByRole('button').click()
-  await expect.element(screen.getByText('Value: 6')).toBeVisible()
+  // Interact using Vitest locators (async)
+  await screen.getByRole('button', { name: 'Increment' }).click()
 
-  // Cleanup is handled automatically via the setup file's import
+  // Assert using Vitest async assertions (waits automatically)
+  await expect.element(screen.getByText('Count is 2')).toBeVisible()
 })
-
-
-import { expect, test, afterEach } from 'vitest'
-// Import from the 'pure' entry point for manual cleanup
-import { render, cleanup } from 'vitest-browser-solid/pure'
-import { MyComponent } from './MyComponent'
-
-// Manually call cleanup after each test
-afterEach(cleanup);
-
-test('manual cleanup example', () => {
-  const screen = render( <MyComponent />);
-  // ... assertions ...
-  // Component remains mounted until afterEach calls cleanup()
-});
-
 ```
 
 ### Testing Updates
@@ -101,7 +83,13 @@ Directly: By calling them within createRoot from solid-js if they don't rely on 
 Via a Small Test Component: Render a minimal component using the composable with render and test its output/behavior.
 
 
-Special thanks
-Inspired by @testing-library/react, @testing-library/solid, and other Testing Library packages.
+
+Inspired by 
+
+[vitest-browser-react](https://github.com/vitest-dev/vitest-browser-react) / 
+[vitest-browser-vue](https://github.com/vitest-dev/vitest-browser-vue) / 
+[vitest-browser-svelte](https://github.com/vitest-dev/vitest-browser-svelte)
+
+
 
 
