@@ -98,7 +98,6 @@ Modify Signals in Test: Update the signal's value directly in your test code.
 
 Assert on Result: Use await expect.element(...) to verify the DOM updates reactively.
 
-This library does not provide a rerender method, as it doesn't map well to Solid's update model and can be confusing. Use signal manipulation for testing reactive updates.
 
 Testing Composables / Primitives
 Solid's composable functions or custom primitives (create...) can typically be tested:
@@ -107,7 +106,6 @@ Directly: By calling them within createRoot from solid-js if they don't rely on 
 
 Via a Small Test Component: Render a minimal component using the composable with render and test its output/behavior.
 
-A dedicated renderHook helper is not provided as it's less necessary with Solid's architecture.
 
 Special thanks
 Inspired by @testing-library/react, @testing-library/solid, and other Testing Library packages.
