@@ -1,0 +1,75 @@
+{
+  "name": "vitest-browser-solid",
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.6.0",
+  "description": "Render SolidJS components in Vitest Browser Mode",
+  "author": "Vitest Team and advancedtw",
+  "license": "MIT",
+  "funding": "https://opencollective.com/vitest",
+  "homepage": "https://github.com/advancedtw/vitest-browser-solid#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advancedtw/vitest-browser-solid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/advancedtw/vitest-browser-solid/issues"
+  },
+  "keywords": [
+    "solid",
+    "solidjs",
+    "vitest",
+    "browser",
+    "testing"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./pure": {
+      "types": "./dist/pure.d.ts",
+      "default": "./dist/pure.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "*.d.ts",
+    "*.mjs",
+    "dist"
+  ],
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch --sourcemap",
+    "test": "vitest",
+    "publish-ci": "tsx scripts/publish-ci.ts",
+    "release": "tsx scripts/release.ts",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm lint --fix"
+  },
+  "peerDependencies": {
+    "@vitest/browser": "^2.1.0 || ^3.0.0",
+    "solid-js": "1.9.5",
+    "vitest": "^2.1.0 || ^3.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "4.11.0",
+    "@vitest/browser": "3.1.1",
+    "bumpp": "^10.1.0",
+    "changelogithub": "13.13.0",
+    "esbuild-plugin-solid": "0.6.0",
+    "eslint": "9.24.0",
+    "playwright": "1.51.1",
+    "tsup": "8.4.0",
+    "tsx": "4.19.3",
+    "typescript": "5.8.3",
+    "vite-plugin-solid": "2.11.6",
+    "vitest": "3.1.1",
+    "zx": "8.5.0"
+  }
+}
