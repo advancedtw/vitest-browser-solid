@@ -81,9 +81,12 @@ test('manual cleanup example', () => {
   // Component remains mounted until afterEach calls cleanup()
 });
 
+```
 
+```
 Why the render(() => <Component />) Signature?
 This library requires passing a function that returns JSX (() => <Component />) to render, rather than the component type directly (render(Component, { props })). This aligns directly with SolidJS's core render function (solid-js/web), ensuring natural handling of JSX children (render(() => <Layout><Child /></Layout>)) and proper setup of Solid's reactive context.
+```
 
 
 Testing Updates
@@ -109,6 +112,4 @@ A dedicated renderHook helper is not provided as it's less necessary with Solid'
 Special thanks
 Inspired by @testing-library/react, @testing-library/solid, and other Testing Library packages.
 
-Built upon the fantastic Vitest test runner and its Browser Mode.
 
-For the amazing SolidJS framework.
