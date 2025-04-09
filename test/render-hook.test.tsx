@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { createSignal, createContext, useContext, createMemo } from 'solid-js';
 import type { Component, ParentProps } from 'solid-js';
-import { createRoot } from 'solid-js'; 
+import { createRoot } from 'solid-js';
 
 import { render } from '../src/index';
 import { useCounter } from './fixtures/useCounter'; // Solid version
@@ -19,6 +19,7 @@ test('should increment counter', () => {
 
     dispose();
   });
+
 });
 
 test('logic should react to prop changes (using signals)', async () => {
@@ -52,7 +53,7 @@ test('logic should react to prop changes (using signals)', async () => {
     );
   };
 
-  const screen = render(() => <BranchComponent />);
+  const screen = render(<BranchComponent />);
 
   expect(screen.getByText('Branch: left')).toBeVisible();
   expect(screen.getByText('Value: left value')).toBeVisible(); // Uses leftState initially
@@ -81,11 +82,11 @@ test('allows context providers via component structure', async () => {
     );
   };
 
-  const screen = render(() => (
+  const screen = render(
     <Wrapper>
       <ContextReader />
     </Wrapper>
-  ));
+  );
 
   expect(screen.getByText('Context Value: provided')).toBeVisible();
 

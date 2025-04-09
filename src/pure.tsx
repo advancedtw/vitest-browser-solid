@@ -28,16 +28,15 @@ export interface RenderResult extends LocatorSelectors {
 
 const mountedContainers = new Map<HTMLElement, () => void>();
 
-
 /**
  * Renders Solid JSX provided by a factory function into a container.
  *
- * @param uiFactory A function that returns the JSX element(s) to render.
+ * @param element JSX element(s) to render.
  * @param options Configuration for container and baseElement.
  * @returns RenderResult containing the container, utilities, and locators.
  */
 export function render(
-  uiFactory: () => JSX.Element, // Changed signature: Accepts the factory function directly
+  element: JSX.Element,
   options: SolidRenderOptions = {},
 ): RenderResult {
   const {
@@ -58,8 +57,9 @@ export function render(
   }
 
   // Directly call solidRender with the user's factory function
-  const dispose = solidRender(uiFactory, container);
+  const dispose = solidRender(() => element, container);
   mountedContainers.set(container, dispose);
+
 
   const unmount = () => {
     if (mountedContainers.has(container)) {
@@ -91,7 +91,7 @@ export function render(
 export function cleanup(): void {
   mountedContainers.forEach((dispose, container) => {
     dispose();
-  // Check parent before removing - container might have been removed by parent/unmount
+    // Check parent before removing - container might have been removed by parent/unmount
     if (container.parentNode === document.body) {
       document.body.removeChild(container);
     }

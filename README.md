@@ -16,8 +16,8 @@ import { expect, test } from 'vitest'
 import { Counter } from './Counter' // Your SolidJS component
 
 test('counter button increments the count', async () => {
-  // Pass a factory function () => JSX containing your component and props
-  const screen = render(() => <Counter initialCount={1} />)
+  // JSX containing your component and props
+  const screen = render( <Counter initialCount={1} />)
 
   // Interact using Vitest locators (async)
   await screen.getByRole('button', { name: 'Increment' }).click()
@@ -56,8 +56,8 @@ import { page } from '@vitest/browser/context' // Import page context
 import { MyComponent } from './MyComponent'
 
 test('counter button increments the count using page.render', async () => {
-  // page.render accepts the same factory function () => JSX
-  const screen = page.render(() => <MyComponent initialValue={5} />)
+  // JSX containing your component and props
+  const screen = page.render( <MyComponent initialValue={5} />)
 
   // ... interactions and assertions ...
   await screen.getByRole('button').click()
@@ -76,20 +76,14 @@ import { MyComponent } from './MyComponent'
 afterEach(cleanup);
 
 test('manual cleanup example', () => {
-  const screen = render(() => <MyComponent />);
+  const screen = render( <MyComponent />);
   // ... assertions ...
   // Component remains mounted until afterEach calls cleanup()
 });
 
 ```
 
-```
-Why the render(() => <Component />) Signature?
-This library requires passing a function that returns JSX (() => <Component />) to render, rather than the component type directly (render(Component, { props })). This aligns directly with SolidJS's core render function (solid-js/web), ensuring natural handling of JSX children (render(() => <Layout><Child /></Layout>)) and proper setup of Solid's reactive context.
-```
-
-
-Testing Updates
+### Testing Updates
 SolidJS updates are driven by fine-grained reactivity. To test component updates:
 
 Pass Signals as Props: Design components to accept signals for props that change.
@@ -99,7 +93,7 @@ Modify Signals in Test: Update the signal's value directly in your test code.
 Assert on Result: Use await expect.element(...) to verify the DOM updates reactively.
 
 
-Testing Composables / Primitives
+### Testing Composables / Primitives
 Solid's composable functions or custom primitives (create...) can typically be tested:
 
 Directly: By calling them within createRoot from solid-js if they don't rely on component context.
