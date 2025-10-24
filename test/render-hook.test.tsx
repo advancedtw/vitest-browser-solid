@@ -53,7 +53,7 @@ test('logic should react to prop changes (using signals)', async () => {
     );
   };
 
-  const screen = render(<BranchComponent />);
+  const screen = render(() => <BranchComponent />);
 
   expect(screen.getByText('Branch: left')).toBeVisible();
   expect(screen.getByText('Value: left value')).toBeVisible(); // Uses leftState initially
@@ -82,11 +82,11 @@ test('allows context providers via component structure', async () => {
     );
   };
 
-  const screen = render(
+  const screen = render(() => (
     <Wrapper>
       <ContextReader />
     </Wrapper>
-  );
+  ));
 
   expect(screen.getByText('Context Value: provided')).toBeVisible();
 
