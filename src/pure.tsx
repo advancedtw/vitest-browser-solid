@@ -1,6 +1,5 @@
 import type { Locator, LocatorSelectors } from '@vitest/browser/context'
-import { debug as browserDebug, getElementLocatorSelectors } from '@vitest/browser/utils'
-import type { PrettyDOMOptions } from '@vitest/browser/utils'
+import { utils, type PrettyDOMOptions } from "vitest/browser";
 import type { JSX } from 'solid-js'
 import { render as solidRender } from 'solid-js/web'
 
@@ -28,6 +27,7 @@ export interface RenderResult extends LocatorSelectors {
 
 const mountedContainers = new Map<HTMLElement, () => void>();
 
+
 /**
  * Renders Solid JSX provided by a factory function into a container.
  *
@@ -44,6 +44,7 @@ export function render(
     baseElement: customBaseElement,
   } = options;
 
+  const { debug: browserDebug, getElementLocatorSelectors } = utils
   const baseElement = customBaseElement || customContainer?.parentElement || document.body;
   const container = customContainer || baseElement.appendChild(document.createElement('div'));
 
