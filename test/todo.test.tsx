@@ -5,14 +5,14 @@ import { describe, expect, test } from 'vitest';
 
 describe('<TodoList />', () => {
     test('it will render an text input and a button', async () => {
-        const screen = render(<TodoList />);
+        const screen = render(() => <TodoList />);
 
         await expect.element(screen.getByPlaceholder('new todo here')).toBeVisible();
         await expect.element(screen.getByRole('button', { name: /Add Todo/i })).toBeVisible();
     });
 
     test('it will add a new todo', async () => {
-        const screen = render(<TodoList />);
+        const screen = render(() => <TodoList />);
 
         const inputLocator = screen.getByPlaceholder('new todo here');
         const buttonLocator = screen.getByRole('button', { name: /Add Todo/i });
@@ -27,7 +27,7 @@ describe('<TodoList />', () => {
     });
 
     test('it will mark a todo as completed', async () => {
-        const screen = render(<TodoList />);
+        const screen = render(() => <TodoList />);
         const inputLocator = screen.getByPlaceholder('new todo here');
         const buttonLocator = screen.getByRole('button', { name: /Add Todo/i });
 

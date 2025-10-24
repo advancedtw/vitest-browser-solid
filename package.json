@@ -1,7 +1,7 @@
 {
   "name": "vitest-browser-solid",
   "type": "module",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "packageManager": "pnpm@9.6.0",
   "description": "Render SolidJS components in Vitest Browser Mode",
   "author": "Vitest Team and advancedtw",
@@ -53,23 +53,24 @@
     "lint:fix": "pnpm lint --fix"
   },
   "peerDependencies": {
-    "@vitest/browser": "^2.1.0 || ^3.0.0",
-    "solid-js": "1.9.5",
-    "vitest": "^2.1.0 || ^3.0.0"
+    "@vitest/browser": "^4.0.0",
+    "solid-js": "1.9.9",
+    "vitest": "^4.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "4.11.0",
-    "@vitest/browser": "3.1.1",
-    "bumpp": "^10.1.0",
-    "changelogithub": "13.13.0",
+    "@antfu/eslint-config": "6.0.0",
+    "@vitest/browser": "4.0.2",
+    "@vitest/browser-playwright": "^4.0.2",
+    "bumpp": "10.3.1",
+    "changelogithub": "13.16.0",
     "esbuild-plugin-solid": "0.6.0",
-    "eslint": "9.24.0",
-    "playwright": "1.51.1",
-    "tsup": "8.4.0",
-    "tsx": "4.19.3",
-    "typescript": "5.8.3",
-    "vite-plugin-solid": "2.11.6",
-    "vitest": "3.1.1",
-    "zx": "8.5.0"
+    "eslint": "9.38.0",
+    "playwright": "1.56.1",
+    "tsup": "8.5.0",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vite-plugin-solid": "2.11.10",
+    "zx": "8.8.5",
+    "vitest": "4.0.2"
   }
 }

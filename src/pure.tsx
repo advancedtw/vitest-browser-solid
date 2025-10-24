@@ -1,6 +1,5 @@
 import type { Locator, LocatorSelectors } from '@vitest/browser/context'
-import { debug as browserDebug, getElementLocatorSelectors } from '@vitest/browser/utils'
-import type { PrettyDOMOptions } from '@vitest/browser/utils'
+import { utils, type PrettyDOMOptions } from "vitest/browser";
 import type { JSX } from 'solid-js'
 import { render as solidRender } from 'solid-js/web'
 
@@ -28,15 +27,16 @@ export interface RenderResult extends LocatorSelectors {
 
 const mountedContainers = new Map<HTMLElement, () => void>();
 
+
 /**
  * Renders Solid JSX provided by a factory function into a container.
  *
- * @param element JSX element(s) to render.
+ * @param component A function that returns JSX element(s) to render.
  * @param options Configuration for container and baseElement.
  * @returns RenderResult containing the container, utilities, and locators.
  */
 export function render(
-  element: JSX.Element,
+  component: () => JSX.Element,
   options: SolidRenderOptions = {},
 ): RenderResult {
   const {
@@ -44,6 +44,7 @@ export function render(
     baseElement: customBaseElement,
   } = options;
 
+  const { debug: browserDebug, getElementLocatorSelectors } = utils
   const baseElement = customBaseElement || customContainer?.parentElement || document.body;
   const container = customContainer || baseElement.appendChild(document.createElement('div'));
 
@@ -56,8 +57,9 @@ export function render(
     mountedContainers.delete(container);
   }
 
-  // Directly call solidRender with the user's factory function
-  const dispose = solidRender(() => element, container);
+  // Call solidRender with the component function - this ensures computations
+  // are created inside the render root, not at the call site
+  const dispose = solidRender(component, container);
   mountedContainers.set(container, dispose);
 
 

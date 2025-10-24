@@ -6,7 +6,7 @@
     "lib": ["esnext", "dom", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["@vitest/browser/providers/playwright"],
+    "types": ["@vitest/browser-playwright"],
     "strict": true,
     "declaration": true,
     "noEmit": true,

@@ -1,4 +1,4 @@
-/// <reference types="@vitest/browser/providers/playwright" />
+import { playwright } from '@vitest/browser-playwright'
 
 import { defineConfig } from 'vitest/config'
 import solidPlugin from 'vite-plugin-solid' // Import the Solid plugin
@@ -9,9 +9,11 @@ export default defineConfig({
     solidPlugin()
   ],
   test: {
+    name: 'browser',
+    printConsoleTrace: true,
     globals: true,
     browser: {
-      provider: "playwright",
+      provider: playwright(),
       enabled: true,
       instances: [{ browser: "chromium" }],
     },
