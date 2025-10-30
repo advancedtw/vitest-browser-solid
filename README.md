@@ -10,7 +10,7 @@ Render SolidJS components in Vitest Browser Mode. This library follows `testing-
 
 Requires `vitest` >= 4.0.0, `@vitest/browser` >= 4.0.0, and `solid-js` >= 1.8.0.
 
-Tested and developed using `vitest` 4.0.2, `@vitest/browser` 4.0.2, and `solid-js` 1.9.9.
+Tested and developed using `vitest` 4.0.2, `@vitest/browser` 4.0.2, and `solid-js` 1.9.10.
 
 ## Installation
 
