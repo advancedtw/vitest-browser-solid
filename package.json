@@ -54,23 +54,24 @@
   },
   "peerDependencies": {
     "@vitest/browser": "^4.0.0",
-    "solid-js": "1.9.9",
+    "solid-js": "^1.8.0",
     "vitest": "^4.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "6.0.0",
     "@vitest/browser": "4.0.2",
-    "@vitest/browser-playwright": "^4.0.2",
+    "@vitest/browser-playwright": "4.0.2",
     "bumpp": "10.3.1",
     "changelogithub": "13.16.0",
     "esbuild-plugin-solid": "0.6.0",
     "eslint": "9.38.0",
     "playwright": "1.56.1",
+    "solid-js": "1.9.10",
     "tsup": "8.5.0",
     "tsx": "4.20.6",
     "typescript": "5.9.3",
     "vite-plugin-solid": "2.11.10",
-    "zx": "8.8.5",
-    "vitest": "4.0.2"
+    "vitest": "4.0.2",
+    "zx": "8.8.5"
   }
 }
