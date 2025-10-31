@@ -1,5 +1,5 @@
-import type { Locator, LocatorSelectors } from '@vitest/browser/context'
-import { utils, type PrettyDOMOptions } from "vitest/browser";
+import type { Locator, LocatorSelectors, PrettyDOMOptions } from 'vitest/browser'
+import { utils } from "vitest/browser";
 import type { JSX } from 'solid-js'
 import { render as solidRender } from 'solid-js/web'
 
