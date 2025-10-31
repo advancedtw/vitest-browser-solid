@@ -14,7 +14,7 @@ beforeEach(() => {
   cleanup();
 });
 
-declare module '@vitest/browser/context' {
+declare module 'vitest/browser' {
   interface BrowserPage {
     render: typeof render;
   }

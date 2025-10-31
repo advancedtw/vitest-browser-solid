@@ -8,9 +8,9 @@ Render SolidJS components in Vitest Browser Mode. This library follows `testing-
 
 `vitest-browser-solid` aims to deliver a good developer experience in Vitest Browser Mode by incorporating the [locators API](https://vitest.dev/guide/browser/locators.html) and [retry-ability](https://vitest.dev/guide/browser/assertion-api.html) mechanism directly into the `render` result. This allows you to call user methods without needing to verify the element's existence or wait for external events (like API calls) to render the element.
 
-Requires `vitest` >= 4.0.0, `@vitest/browser` >= 4.0.0, and `solid-js` >= 1.8.0.
+Requires `vitest` >= 4.0.0, and `solid-js` >= 1.8.0.
 
-Tested and developed using `vitest` 4.0.2, `@vitest/browser` 4.0.2, and `solid-js` 1.9.10.
+Tested and developed using `vitest` 4.0.5, and `solid-js` 1.9.10.
 
 ## Installation
 
